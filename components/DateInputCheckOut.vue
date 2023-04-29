@@ -1,5 +1,5 @@
 <template>
-  <button class="cico__input" @keyup.enter.stop.prevent="toggleDatepicker" data-testid="cicoInput" :tabindex="tabIndex">
+  <button class="cico__input" @keyup.enter.stop.prevent="toggleDatepicker" data-testid="cicoInput" tabindex="-1">
     {{ inputDate || get(i18n, 'activity.filter.action') }}
   </button>
 </template>
@@ -48,10 +48,6 @@ export default {
       if (this.inputSize === 'short') return helpers.dateFormatter(this.checkOut, 'DD MMM')
 
       return helpers.dateFormatter(this.checkOut, 'DD MMM')
-    },
-
-    tabIndex() {
-      return this.inputDateType === 'check-in' ? 0 : -1
     },
   },
 

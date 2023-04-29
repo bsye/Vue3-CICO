@@ -427,10 +427,13 @@ export default {
       this.configureI18n()
     },
 
-    disabledDates() {
-      this.disabledDateIsCheckIn()
-      this.disabledDateIsCheckOut()
-      this.reRender()
+    disabledDates: {
+      handler() {
+        this.disabledDateIsCheckIn()
+        this.disabledDateIsCheckOut()
+        this.reRender()
+      },
+      deep: true,
     },
   },
 
@@ -449,7 +452,7 @@ export default {
     document.addEventListener('keyup', this.escFunction, false)
   },
 
-  destroyed() {
+  unmounted() {
     window.removeEventListener('resize', this.handleResize)
 
     document.removeEventListener('keyup', this.escFunction, false)

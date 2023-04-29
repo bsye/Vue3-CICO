@@ -30,10 +30,8 @@
       </span>
       <span v-else class="cico__checkout"> {{ '-' }} {{ get(i18n, 'activity.calendar.checkOut') }} </span>
 
-      <template>
-        <span v-if="extraNights < 1" class="cico__nights">
-          ({{ `${minNights}` }} {{ get(i18n, 'checkInCheckOut.nightsIncluded') }})
-        </span>
+      <template v-if="extraNights < 1">
+        <span class="cico__nights">({{ `${minNights}` }} {{ get(i18n, 'checkInCheckOut.nightsIncluded') }})</span>
       </template>
 
       <span class="cico__travel-dates">

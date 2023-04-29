@@ -6,7 +6,6 @@
       class="cico__month-day"
       @click.prevent.stop="dayClicked($event, date)"
       :day="date"
-      :ref="date"
       @mouseenter="validDayHovered(date)"
       @mouseleave="validDayHovered(null)"
       :class="[
