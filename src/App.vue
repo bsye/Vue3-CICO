@@ -45,7 +45,7 @@
         </svg>
       </div>
       <div class="picker">
-        <Cico class="cico__style-landing" />
+        <Cico class="cico__style-landing" :minNights="3" />
         <Cico class="cico__style-search" />
       </div>
     </div>

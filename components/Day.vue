@@ -6,6 +6,7 @@
       class="cico__month-day"
       @click.prevent.stop="dayClicked($event, date)"
       :day="date"
+      :ref="dateString"
       @mouseenter="validDayHovered(date)"
       @mouseleave="validDayHovered(null)"
       :class="[
@@ -295,6 +296,10 @@ export default {
       const day = days[this.date.getUTCDay()]
 
       return this.disabledWeekDays[day]
+    },
+
+    dateString() {
+      return JSON.stringify(this.date)
     },
   },
 
