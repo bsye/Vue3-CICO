@@ -55,7 +55,7 @@
 <script>
 import './assets/scss/index.scss'
 import Cico from '../components/Cico.vue'
-import en from '../public/i18n/en'
+import en from '/i18n/en.js'
 
 export default {
   name: 'Examples',

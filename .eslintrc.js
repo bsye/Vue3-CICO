@@ -2,11 +2,9 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    es2022: true,
   },
   extends: ['plugin:vue/essential', '@vue/airbnb', '@vue/prettier'],
-  parserOptions: {
-    parser: '@babel/eslint-parser',
-  },
   plugins: ['prettier'],
   rules: {
     'no-plusplus': 'off',

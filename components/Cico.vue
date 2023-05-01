@@ -150,7 +150,7 @@ import DateInputs from './DateInputs.vue'
 import CallToAction from './CallToAction.vue'
 import Helpers from '../src/helpers'
 // eslint-disable-next-line import/no-named-as-default
-import i18nDefaults from '../public/i18n/en'
+import i18nDefaults from '/i18n/en.js'
 
 export default {
   name: 'Cico',
