@@ -1,14 +1,14 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
 import get from 'lodash.get'
-import i18n from '../../public/i18n/en'
+import i18n from '../../i18n/en'
 import helpers from '../../src/helpers'
 
 import Cico from '../../components/Cico.vue'
 
 describe('Call To Action Component', () => {
   const wrapper = mount(Cico, {
-    propsData: {
+    props: {
       minNights: 3,
       maxNights: 20,
       startDate: new Date('2022-12-20'),
@@ -32,11 +32,8 @@ describe('Call To Action Component', () => {
 
   it('should tell me the selected checkIn Date but not the checkOut date', () => {
     const testCheckIn = helpers.dateFormatter('2022-12-31', 'ddd DD MMM.')
-
     expect(wrapper.find('.cico__nights-info .cico__checkin').text()).to.be.eql(testCheckIn)
-    expect(wrapper.find('.cico__nights-info .cico__checkout').text()).to.be.eql(
-      `- ${get(i18n, 'activity.calendar.checkOut')}`,
-    )
+    expect(wrapper.find('.cico__nights-info .cico__checkout').html()).to.be.eql(`<span class="cico__checkout"> - ${get(i18n, 'activity.calendar.checkOut')} </span>`)
   })
 
   it('should tell me that the dates are selected', async () => {

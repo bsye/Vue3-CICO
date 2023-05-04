@@ -11,7 +11,7 @@ function _interopRequireDefault(obj) {
 
 describe('Cico Component', function () {
   const wrapper = (0, _testUtils.mount)(_Cico.default, {
-    propsData: {
+    props: {
       minNights: 3,
       maxNights: 20,
       minDate: new Date('2022-12-28'),

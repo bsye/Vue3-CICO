@@ -28,7 +28,7 @@
       <span v-else-if="checkOut" class="cico__checkout">
         {{ ` - ${dateFormatter(checkOut, 'ddd DD MMM.')} ` }}
       </span>
-      <span v-else class="cico__checkout"> {{ ' - ' }} {{ `${get(i18n, 'activity.calendar.checkOut')} ` }} </span>
+      <span v-else class="cico__checkout">{{ ` - ${get(i18n, 'activity.calendar.checkOut')} ` }}</span>
 
       <template v-if="extraNights < 1">
         <span class="cico__nights">({{ `${minNights}` }} {{ get(i18n, 'checkInCheckOut.nightsIncluded') }})</span>

@@ -12,20 +12,20 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledDates: ['2022-12-23', '2022-12-24'],
           date: new Date('2022-12-24'),
         },
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledDates: ['2022-12-23', '2022-12-24'],
           date: new Date('2022-12-30'),
         },
@@ -54,35 +54,35 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledDateRanges: [{ start: new Date('2023-02-12'), end: new Date('2023-02-10') }],
           date: new Date('2023-02-11'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledDateRanges: [{ end: new Date('2023-02-10') }],
           date: new Date('2023-02-11'),
         },
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledDateRanges: [{ start: new Date('2023-02-01'), end: new Date('2023-02-10') }],
           date: new Date('2023-02-04'),
         },
       })
 
       wrapper4 = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledDateRanges: [{ start: new Date('2023-02-01') }],
           date: new Date('2023-02-04'),
         },
       })
 
       wrapper5 = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledDateRanges: [
             { start: new Date('2023-02-01'), end: new Date('2023-02-03') },
             { start: new Date('2023-02-10') },
@@ -120,13 +120,13 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-27'),
           checkOut: new Date('2022-12-31'),
           date: new Date('2022-12-24'),
@@ -134,7 +134,7 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-27'),
           maxNights: 2,
           date: new Date('2022-12-30'),
@@ -160,7 +160,7 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           belongsToThisMonth: true,
           date: new Date('2022-12-12'),
         },
@@ -178,14 +178,14 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           belongsToThisMonth: true,
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           belongsToThisMonth: true,
           minDate: new Date('2022-12-29'),
           date: new Date('2022-12-30'),
@@ -210,13 +210,13 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           minNightCount: 2,
           checkIn: new Date('2022-12-29'),
           date: new Date('2022-12-30'),
@@ -224,14 +224,14 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           minDate: new Date('2022-12-29'),
           date: new Date('2023-01-12'),
         },
       })
 
       wrapper4 = shallowMount(Day, {
-        propsData: {
+        props: {
           minNightCount: 2,
           checkIn: new Date('2022-12-29'),
           date: new Date('2022-12-26'),
@@ -262,14 +262,14 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           belongsToThisMonth: true,
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           belongsToThisMonth: false,
           date: new Date('2022-12-30'),
         },
@@ -292,14 +292,14 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           hoveringDate: new Date('2022-12-13'),
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-12-30'),
           hoveringDate: new Date('2022-12-30'),
@@ -307,7 +307,7 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-12-30'),
           hoveringDate: new Date('2022-12-31'),
@@ -335,21 +335,21 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           hoveringDate: new Date('2022-12-13'),
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-12-30'),
         },
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-12-31'),
         },
@@ -376,21 +376,21 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           hoveringDate: new Date('2022-12-13'),
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-12-30'),
         },
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-12-31'),
         },
@@ -417,13 +417,13 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           checkOut: new Date('2022-12-31'),
           date: new Date('2022-01-12'),
@@ -432,7 +432,7 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           checkOut: new Date('2022-12-31'),
           date: new Date('2022-01-12'),
@@ -461,20 +461,20 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkOut: new Date('2022-12-31'),
           date: new Date('2022-12-31'),
         },
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkOut: new Date('2022-12-31'),
           date: new Date('2022-12-30'),
         },
@@ -501,13 +501,13 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-01-13'),
           hoveringDate: new Date('2022-01-13'),
@@ -515,7 +515,7 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           checkOut: new Date('2022-12-31'),
           date: new Date('2022-01-13'),
@@ -544,14 +544,14 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
           hoveringDate: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           minDate: new Date('2022-01-01'),
           checkIn: new Date('2023-01-12'),
           hoveringDate: new Date('2023-01-11'),
@@ -559,7 +559,7 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           minDate: new Date('2022-01-01'),
           checkIn: new Date('2023-01-12'),
           hoveringDate: new Date('2023-01-13'),
@@ -587,14 +587,14 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-10'),
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           date: new Date('2022-01-13'),
           hoveringDate: new Date('2022-01-13'),
@@ -602,7 +602,7 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           checkOut: new Date('2022-12-31'),
           date: new Date('2022-01-13'),
@@ -631,13 +631,13 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           checkOut: new Date('2023-01-12'),
           date: new Date('2023-01-08'),
@@ -645,7 +645,7 @@ describe('Day Component', () => {
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           checkIn: new Date('2022-12-30'),
           checkOut: new Date('2023-01-12'),
           date: new Date('2022-01-15'),
@@ -673,20 +673,20 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           maxDate: new Date('2023-01-12'),
           date: new Date('2023-01-13'),
         },
       })
 
       wrapper3 = shallowMount(Day, {
-        propsData: {
+        props: {
           maxDate: new Date('2023-01-12'),
           date: new Date('2023-01-11'),
         },
@@ -712,13 +712,13 @@ describe('Day Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Day, {
-        propsData: {
+        props: {
           date: new Date('2023-01-12'),
         },
       })
 
       wrapper2 = shallowMount(Day, {
-        propsData: {
+        props: {
           disabledWeekDays: { thursday: 'thursday' },
           date: new Date('2023-01-12'),
         },

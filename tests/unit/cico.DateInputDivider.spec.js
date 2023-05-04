@@ -8,19 +8,19 @@ describe('DateInputDivider Component', () => {
 
     beforeEach(() => {
         wrapper = shallowMount(DateInputDivider, {
-            propsData: {
+            props: {
                 inputSize: 'extra-short'
             }
         })
 
         wrapper2 = shallowMount(DateInputDivider, {
-            propsData: {
+            props: {
                 inputSize: 'short'
             }
         })
 
         wrapper3 = shallowMount(DateInputDivider, {
-            propsData: {
+            props: {
                 inputSize: 'long'
             }
         })
@@ -39,10 +39,10 @@ describe('DateInputDivider Component', () => {
     })
 
     it('should display an arrow if isInputShort is false', () => {
-        expect(wrapper.html()).toContain('iconarrow-stub style="display: none;"')
+        expect(wrapper.html()).toContain('icon-arrow-stub data-v-4ecf7511="" style="display: none;"')
     })
 
     it('should display a dash if isInputShort is true', () => {
-        expect(wrapper2.html()).toContain('span style="display: none;"')
+        expect(wrapper.html()).toContain('span data-v-4ecf7511=""')
     })
 })

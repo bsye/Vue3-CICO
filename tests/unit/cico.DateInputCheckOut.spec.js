@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import get from 'lodash.get'
 import DateInputCheckOut from '../../components/DateInputCheckOut.vue'
 import helpers from '../../src/helpers'
-import i18n from '../../public/i18n/en'
+import i18n from '../../i18n/en'
 
 describe('DateInputCheckOut Component', () => {
   describe('checkOutDateDisplay', () => {
@@ -11,7 +11,7 @@ describe('DateInputCheckOut Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(DateInputCheckOut, {
-        propsData: {
+        props: {
           isOpen: false,
           toggleDatepicker: () => false,
           i18n,
@@ -23,7 +23,7 @@ describe('DateInputCheckOut Component', () => {
       })
 
       wrapper2 = shallowMount(DateInputCheckOut, {
-        propsData: {
+        props: {
           isOpen: false,
           toggleDatepicker: () => false,
           i18n,
@@ -49,7 +49,7 @@ describe('DateInputCheckOut Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(DateInputCheckOut, {
-        propsData: {
+        props: {
           isOpen: false,
           toggleDatepicker: () => false,
           i18n,
@@ -61,7 +61,7 @@ describe('DateInputCheckOut Component', () => {
       })
 
       wrapper2 = shallowMount(DateInputCheckOut, {
-        propsData: {
+        props: {
           isOpen: false,
           toggleDatepicker: () => false,
           i18n,
@@ -73,7 +73,7 @@ describe('DateInputCheckOut Component', () => {
       })
 
       wrapper3 = shallowMount(DateInputCheckOut, {
-        propsData: {
+        props: {
           isOpen: false,
           toggleDatepicker: () => false,
           i18n,

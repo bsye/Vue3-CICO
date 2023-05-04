@@ -12,14 +12,14 @@ describe('Price Component', () => {
 
     beforeEach(() => {
       wrapper = shallowMount(Price, {
-        propsData: {
+        props: {
           date: new Date('2022-12-12'),
           prices: [{ date: '2023-01-12' }],
         },
       })
 
       wrapper2 = shallowMount(Price, {
-        propsData: {
+        props: {
           isValidDay: 'is-valid-day',
           date: new Date('2023-01-12'),
           prices: [{ date: '2023-01-12' }],
@@ -27,7 +27,7 @@ describe('Price Component', () => {
       })
 
       wrapper3 = shallowMount(Price, {
-        propsData: {
+        props: {
           isValidDay: 'is-valid-day',
           date: new Date('2023-01-12'),
           prices: [{ dat: '2023-01-1', price: '120' }],
@@ -35,7 +35,7 @@ describe('Price Component', () => {
       })
 
       wrapper4 = shallowMount(Price, {
-        propsData: {
+        props: {
           isValidDay: 'is-valid-day',
           date: new Date('2023-01-12'),
           prices: [{ date: new Date('2023-01-12'), price: '120' }],

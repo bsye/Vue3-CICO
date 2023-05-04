@@ -7,7 +7,7 @@ describe('DateInputs Component', () => {
 
   beforeEach(() => {
     wrapper = mount(DateInputs, {
-      propsData: {
+      props: {
         toggleDatepicker: () => false,
         i18n: {}, 
         checkIn: null,
@@ -15,7 +15,7 @@ describe('DateInputs Component', () => {
     })
 
     wrapper2 = mount(DateInputs, {
-      propsData: {
+      props: {
         toggleDatepicker: () => false,
         i18n: {}, 
         checkIn: new Date('2022-12-12'),

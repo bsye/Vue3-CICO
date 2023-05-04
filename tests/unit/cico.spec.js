@@ -1,14 +1,14 @@
 import { mount } from '@vue/test-utils'
 import { expect } from 'chai'
 import get from 'lodash.get'
-import i18n from '../../public/i18n/en'
+import i18n from '../../i18n/en'
 import helpers from '../../src/helpers'
 
 import Cico from '../../components/Cico.vue'
 
 describe('Cico Component', () => {
   const wrapper = mount(Cico, {
-    propsData: {
+    props: {
       minNights: 3,
       maxNights: 20,
       minDate: new Date('2022-12-28'),

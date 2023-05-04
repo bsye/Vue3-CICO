@@ -35,7 +35,7 @@ module.exports = {
           'mixins',
           'inheritAttrs',
           'model',
-          ['props', 'propsData'],
+          ['props', 'props'],
           'data',
           'computed',
           'watch',
