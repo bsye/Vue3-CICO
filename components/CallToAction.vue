@@ -23,12 +23,12 @@
       </span>
 
       <span v-if="!checkOut && validHoveredDate && checkIn" class="cico__checkout">
-        {{ `- ${dateFormatter(validHoveredDate, 'ddd DD MMM.')}` }}
+        {{ ` - ${dateFormatter(validHoveredDate, 'ddd DD MMM.')} ` }}
       </span>
       <span v-else-if="checkOut" class="cico__checkout">
-        {{ `- ${dateFormatter(checkOut, 'ddd DD MMM.')} ` }}
+        {{ ` - ${dateFormatter(checkOut, 'ddd DD MMM.')} ` }}
       </span>
-      <span v-else class="cico__checkout"> {{ '-' }} {{ get(i18n, 'activity.calendar.checkOut') }} </span>
+      <span v-else class="cico__checkout"> {{ ' - ' }} {{ `${get(i18n, 'activity.calendar.checkOut')} ` }} </span>
 
       <template v-if="extraNights < 1">
         <span class="cico__nights">({{ `${minNights}` }} {{ get(i18n, 'checkInCheckOut.nightsIncluded') }})</span>
@@ -45,7 +45,7 @@
             {{ ` ${minNights}` }}
             {{ get(i18n, 'checkInCheckOut.included') }},
           </span>
-          <span class="cico__extra-nights"> {{ extraNights }} {{ get(i18n, 'checkInCheckOut.extraNight') }} </span>)
+          <span class="cico__extra-nights"> {{ extraNights }} {{ `${get(i18n, 'checkInCheckOut.extraNight')} ` }} </span>)
         </template>
       </span>
     </p>
