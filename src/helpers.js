@@ -3,6 +3,7 @@ import get from 'lodash.get'
 
 const helpers = {
   getNextDate(datesArray, referenceDate) {
+    if (typeof datesArray !== 'object') return null
     const now = new Date(referenceDate)
     let closest = Infinity
 
@@ -77,8 +78,11 @@ const helpers = {
   getDayDiff(d1, d2) {
     const t2 = new Date(d2).getTime()
     const t1 = new Date(d1).getTime()
-
+    
     return parseInt((t2 - t1) / (24 * 3600 * 1000), 10)
+  },
+  checkIsValidDate(date) {
+    return date instanceof Date && !isNaN(date)
   },
   getFirstDay(date, firstDayOfWeek) {
     const firstDay = this.getFirstDayOfMonth(date)
@@ -96,7 +100,7 @@ const helpers = {
   },
   getNextMonth(date) {
     let nextMonth
-
+    
     if (date.getMonth() === 11) {
       nextMonth = new Date(date.getFullYear() + 1, 0, 1)
     } else {
@@ -117,18 +121,17 @@ const helpers = {
     return prevMonth
   },
   getMonthDiff(d1, d2) {
-    try {
-      const newD1 = new Date(d1)
-      const newD2 = new Date(d2)
-      const d1Y = newD1.getFullYear()
-      const d2Y = newD2.getFullYear()
-      const d1M = newD1.getMonth()
-      const d2M = newD2.getMonth()
+    const newD1 = new Date(d1)
+    const newD2 = new Date(d2)
 
-      return d2M + 12 * d2Y - (d1M + 12 * d1Y)
-    } catch {
-      return null
-    }
+    if (!helpers.checkIsValidDate(newD1) || !helpers.checkIsValidDate(newD2)) return null
+
+    const d1Y = newD1.getFullYear()
+    const d2Y = newD2.getFullYear()
+    const d1M = newD1.getMonth()
+    const d2M = newD2.getMonth()
+
+    return d2M + 12 * d2Y - (d1M + 12 * d1Y)
   },
   shortenArrayOfStrings(arr, sLen) {
     const newArr = []
@@ -156,22 +159,27 @@ const helpers = {
   },
   compareDay(day1, day2) {
     if (!day1 || !day2) return null
-    const date1 = fecha.format(new Date(day1), 'YYYYMMDD')
-    const date2 = fecha.format(new Date(day2), 'YYYYMMDD')
 
-    if (date1 > date2) {
+    const date1 = new Date(day1)
+    const date2 = new Date(day2)
+
+    if (!helpers.checkIsValidDate(date1) || !helpers.checkIsValidDate(date2)) return null
+
+    const reformatD1 = fecha.format(date1, 'YYYYMMDD')
+    const reformatD2 = fecha.format(date2, 'YYYYMMDD')
+    
+    
+    if (reformatD1 > reformatD2) {
       return 1
     }
 
-    if (date1 === date2) {
+    if (reformatD1 === reformatD2) {
       return 0
     }
 
-    if (date1 < date2) {
+    if (reformatD1 < reformatD2) {
       return -1
     }
-
-    return null
   },
 }
 

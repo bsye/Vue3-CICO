@@ -47,6 +47,7 @@ describe('DateInputCheckIn Component', () => {
     let wrapper2
     let wrapper3
     let wrapper4
+    let wrapper5
 
     beforeEach(() => {
       wrapper = shallowMount(DateInputCheckIn, {
@@ -96,6 +97,18 @@ describe('DateInputCheckIn Component', () => {
           checkOut: new Date('2023-01-01'),
         },
       })
+
+      wrapper5 = shallowMount(DateInputCheckIn, {
+        props: {
+          isOpen: false,
+          toggleDatepicker: () => false,
+          i18n,
+          inputSize: 'long',
+          checkinFieldFormat: 'YYYYMMDD',
+          checkIn: new Date('2022-12-12'),
+          checkOut: new Date('2022-12-13'),
+        },
+      })
     })
     it('should use the format ddd DD MMM when input is long', async () => {
       const button = wrapper.find('.cico__input')
@@ -119,6 +132,11 @@ describe('DateInputCheckIn Component', () => {
       const button = wrapper4.find('.cico__input')
 
       expect(button.text()).toBe(helpers.dateFormatter(wrapper.vm.checkIn, 'DD MMM'))
+    })
+
+    it('should use the custom format entered by the user', () => {
+      const button = wrapper5.find('.cico__input')
+      expect(button.text()).toBe('20221212')
     })
   })
 })

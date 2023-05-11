@@ -15,7 +15,7 @@ describe('Call To Action Component', () => {
     },
   })
 
-  it('should ask for the selection of the check in date and tell me that are available also longer stays', async () => {
+  it('should ask for the selection of the check in date and tell me that there are available also longer stays', async () => {
     expect(wrapper.html()).to.not.equal(null)
     await wrapper.find('.cico__dummy-wrapper').trigger('click')
     expect(wrapper.vm.isOpen).to.eql(true)
@@ -36,6 +36,16 @@ describe('Call To Action Component', () => {
     expect(wrapper.find('.cico__nights-info .cico__checkout').html()).to.be.eql(`<span class="cico__checkout"> - ${get(i18n, 'activity.calendar.checkOut')} </span>`)
   })
 
+  it('should update the check-out date and nights info when hovering over a date', async () => {
+    await wrapper.setData({
+      validHoveredDate: new Date('2023-01-01'),
+    })
+
+    const testCheckIn = helpers.dateFormatter('2022-12-31', 'ddd DD MMM.')
+    expect(wrapper.find('.cico__nights-info .cico__checkin').text()).to.be.eql(testCheckIn)
+    expect(wrapper.find('.cico__nights-info .cico__checkout').html()).to.be.eql(`<span class="cico__checkout"> - ${helpers.dateFormatter('2023-01-01', 'ddd DD MMM.')} </span>`)
+  })
+
   it('should tell me that the dates are selected', async () => {
     await wrapper.setProps({
       checkOutDate: new Date('2023-01-04'),
@@ -49,17 +59,24 @@ describe('Call To Action Component', () => {
     expect(wrapper.find('.cico__nights-info .cico__checkout').text()).to.be.eql(`- ${testCheckOut}`)
   })
 
-  it("should tell me that there's an extra night selected", async () => {
+  it("should tell me how many nights total, included, and extra are selected", async () => {
     const ctaText = wrapper.find('.cico__travel-dates').text()
     const expectedText = `( 4 ${get(i18n, 'activity.filter.nights')} -
     3 ${get(i18n, 'checkInCheckOut.included')},
     1 ${get(i18n, 'checkInCheckOut.extraNight')})`
 
     expect(ctaText.replace(/\s/g, '')).to.be.eql(expectedText.replace(/\s/g, ''))
+    
+    await wrapper.setProps({
+      checkInDate: null,
+    })
+    let nightsCount = wrapper.findComponent({name: 'CallToAction'}).vm.nightsCount
+    expect(nightsCount).to.be.eql(0)
   })
 
   it('should tell me that are selected 3 nights', async () => {
     await wrapper.setProps({
+      checkInDate: new Date('2023-01-04'),
       checkOutDate: new Date('2023-01-03'),
     })
 
@@ -67,5 +84,5 @@ describe('Call To Action Component', () => {
     const expectedText = `( 3 ${get(i18n, 'checkInCheckOut.nightsIncluded')})`
 
     expect(ctaText.replace(/\s/g, '')).to.be.eql(expectedText.replace(/\s/g, ''))
-  })
+  }) 
 })

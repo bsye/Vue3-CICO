@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import helpers from '../../src/helpers'
 
 import Day from '../../components/Day.vue'
+import { beforeEach } from 'vitest'
 
 describe('Day Component', () => {
   describe('isDayNotAvailable', () => {
@@ -731,6 +732,84 @@ describe('Day Component', () => {
 
     it('should return "disabled__day-of-the-week" if the day is a disabled day of the week', () => {
       expect(wrapper2.vm.isADisabledDayOfTheWeek).to.eql('disabled__day-of-the-week')
+    })
+  })
+
+  describe('validDayHovered', () => {
+    let wrapper
+    let wrapper2
+    let wrapper3
+    let wrapper4
+
+    beforeEach(() => {
+      wrapper = shallowMount(Day, {
+        props: {
+          date: new Date('2023-02-11'),
+          checkIn: new Date('2023-02-10'),
+        },
+        computed: {
+          isValidDay() {
+            return 'is-valid-day'
+          }
+        }
+
+      }) 
+
+      wrapper2 = shallowMount(Day, {
+        props: {
+          date: new Date('2023-02-11'),
+          checkIn: null
+        },
+        computed: {
+          isValidDay() {
+            return null
+          }
+        },
+      }) 
+
+      wrapper3 = shallowMount(Day, {
+        props: {
+          date: new Date('2023-02-11'),
+          checkIn: new Date('2023-02-01'),
+          checkOut: new Date('2023-02-02')
+        },
+        computed: {
+          isValidDay() {
+            return 'is-valid-day'
+          }
+        }
+      }) 
+
+      wrapper4 = shallowMount(Day, {
+        props: {
+          date: new Date('2023-02-11'),
+          checkIn: new Date('2023-02-12'),
+        },
+        computed: {
+          isValidDay() {
+            return 'is-valid-day'
+          }
+        }
+      }) 
+    })
+    it('should emit valid-day-hovered + date when a valid day is hovered', () => {
+      wrapper.find('.cico__month-day').trigger('mouseenter')
+      expect(wrapper.emitted()).toMatchObject({'valid-day-hovered': [ [ wrapper.vm.date ] ]})
+    })
+
+    it('should emit valid-day-hovered + null if the date is not valid or a check-in is not selected', () => {
+      wrapper2.find('.cico__month-day').trigger('mouseenter')
+      expect(wrapper2.emitted()).toMatchObject({'valid-day-hovered': [ [ null ] ]})
+    })
+
+    it('should emit valid-day-hovered + null if check-in and check-out are selected', () => {
+      wrapper3.find('.cico__month-day').trigger('mouseenter')
+      expect(wrapper3.emitted()).toMatchObject({'valid-day-hovered': [ [ null ] ]})
+    })
+
+    it('should emit valid-day-hovered + null if check-in is selected and hovered date is later than check-in', () => {
+      wrapper4.find('.cico__month-day').trigger('mouseenter')
+      expect(wrapper4.emitted()).toMatchObject({'valid-day-hovered': [ [ null ] ]})
     })
   })
 })

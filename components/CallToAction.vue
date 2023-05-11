@@ -18,9 +18,6 @@
       <span v-if="checkIn" class="cico__checkin">
         {{ dateFormatter(checkIn, 'ddd DD MMM.') }}
       </span>
-      <span v-else>
-        {{ get(i18n, 'activity.calendar.checkIn') }}
-      </span>
 
       <span v-if="!checkOut && validHoveredDate && checkIn" class="cico__checkout">
         {{ ` - ${dateFormatter(validHoveredDate, 'ddd DD MMM.')} ` }}
@@ -30,17 +27,12 @@
       </span>
       <span v-else class="cico__checkout">{{ ` - ${get(i18n, 'activity.calendar.checkOut')} ` }}</span>
 
-      <template v-if="extraNights < 1">
-        <span class="cico__nights">({{ `${minNights}` }} {{ get(i18n, 'checkInCheckOut.nightsIncluded') }})</span>
-      </template>
+      <span class="cico__nights" v-if="extraNights < 1">({{ `${minNights}` }} {{ get(i18n, 'checkInCheckOut.nightsIncluded') }})</span>
 
       <span class="cico__travel-dates">
         <template v-if="extraNights >= 1">
           ({{ ` ${nightsCount}` }}
-          <span v-if="nightsCount > 1">{{ get(i18n, 'activity.filter.nights') }} {{ '-' }}</span>
-          <span v-else>{{ get(i18n, 'activity.filter.night') }} </span>
-        </template>
-        <template v-if="extraNights >= 1">
+          <span>{{ get(i18n, 'activity.filter.nights') }} {{ '-' }}</span>
           <span>
             {{ ` ${minNights}` }}
             {{ get(i18n, 'checkInCheckOut.included') }},
@@ -94,5 +86,3 @@ export default {
   },
 }
 </script>
-
-<style></style>

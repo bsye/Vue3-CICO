@@ -6,7 +6,16 @@ describe('Datepicker Helpers', () => {
     it('should return the next day when comparing a date to a dates array', () => {
       expect(DatepickerHelpers.getNextDate(['10-10-2017', '10-15-2017', '10-20-2017'], '10-12-2017')).to.equal(
         '10-15-2017',
-      )
+      ) 
+      expect(DatepickerHelpers.getNextDate(['asdf'], '10-12-2017')).to.equal(null)
+    })
+
+    it('should return null if no array is passed', () => {
+      expect(DatepickerHelpers.getNextDate('10-10-2017', '10-12-2017')).to.equal(null)
+    })
+
+    it('should return null no date is in the dateArray', () => {
+      expect(DatepickerHelpers.getNextDate('not a date', '10-12-2017')).to.equal(null)
     })
   })
 
@@ -67,12 +76,14 @@ describe('Datepicker Helpers', () => {
   describe('getNextMonth', () => {
     it('should return the next month of a given date', () => {
       expect(DatepickerHelpers.getNextMonth(new Date('12-10-2017'))).to.eql(new Date('01-01-2018'))
+      expect(DatepickerHelpers.getNextMonth(new Date('10-10-2017'))).to.eql(new Date('11-01-2017'))
     })
   })
 
   describe('getPreviousMonth', () => {
     it('should return the previous month of a given date', () => {
-      expect(DatepickerHelpers.getPreviousMonth(new Date('12-10-2017'))).to.eql(new Date('11-1-2017'))
+      expect(DatepickerHelpers.getPreviousMonth(new Date('12-10-2017'))).to.eql(new Date('11-01-2017'))
+      expect(DatepickerHelpers.getPreviousMonth(new Date('01-10-2017'))).to.eql(new Date('12-01-2016'))
     })
   })
 
@@ -87,6 +98,10 @@ describe('Datepicker Helpers', () => {
 
     it("should return two because it's there are two months difference between dates", () => {
       expect(DatepickerHelpers.getMonthDiff('12-10-2017', '1-10-2018')).to.eql(1)
+    })
+
+    it("should return null if either input is not a valid date", () => {
+      expect(DatepickerHelpers.getMonthDiff('not a date', 'not a date')).to.eql(null)
     })
   })
 
@@ -133,6 +148,10 @@ describe('Datepicker Helpers', () => {
 
     it('it should return -1 because the second date is after the first date', () => {
       expect(DatepickerHelpers.compareDay(new Date('2028-10-10'), new Date('2028-10-11'))).to.eql(-1)
+    })
+
+    it('should return null if invalid dates were passed', () => {
+      expect(DatepickerHelpers.compareDay(new Date('not a date'), new Date('not a date'))).to.eql(null)
     })
   })
 })

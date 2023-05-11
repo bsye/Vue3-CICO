@@ -110,22 +110,28 @@ export default {
 
       return false
     },
+
+    inputsWrapperExists() {
+      return get(this, '$refs.inputs_wrapper', null)
+    },
   },
 
   mounted() {
-    if (!get(this, '$refs.inputs_wrapper', null)) return
+    if (!this.inputsWrapperExists) return
+    this.updateInputWidth()
 
     window.addEventListener('resize', () => {
-      if (!get(this, '$refs.inputs_wrapper', null)) return
-      this.inputWidth = this.$refs.inputs_wrapper.clientWidth
+      if (!this.inputsWrapperExists) return
+      this.updateInputWidth()
     })
-
-    this.inputWidth = this.$refs.inputs_wrapper.clientWidth
   },
 
   methods: {
     get,
     ...helpers,
+    updateInputWidth() {
+      this.inputWidth = this.$refs.inputs_wrapper.clientWidth
+    }
   },
 }
 </script>

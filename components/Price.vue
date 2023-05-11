@@ -26,11 +26,7 @@ export default {
 
       let price = null
 
-      try {
-        price = this.prices.find((el) => this.compareDay(el.date, this.date) === 0)
-      } catch {
-        return null
-      }
+      price = this.prices.find((el) => this.compareDay(el.date, this.date) === 0)
 
       return this.get(price, 'price', null)
     },

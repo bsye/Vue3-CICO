@@ -1,4 +1,6 @@
 import { mount } from '@vue/test-utils'
+import i18n from '../../i18n/en'
+import get from 'lodash.get'
 import DateInputs from '../../components/DateInputs.vue'
 
 describe('DateInputs Component', () => {
@@ -9,7 +11,7 @@ describe('DateInputs Component', () => {
     wrapper = mount(DateInputs, {
       props: {
         toggleDatepicker: () => false,
-        i18n: {}, 
+        i18n: i18n, 
         checkIn: null,
       }
     })
@@ -17,11 +19,10 @@ describe('DateInputs Component', () => {
     wrapper2 = mount(DateInputs, {
       props: {
         toggleDatepicker: () => false,
-        i18n: {}, 
+        i18n: i18n, 
         checkIn: new Date('2022-12-12'),
       }
     })
-
   })
 
   it('should update the inputSize based on the inputWidth', async () => {
@@ -56,5 +57,47 @@ describe('DateInputs Component', () => {
   it('should show the input labels if the input is short and a date selection is made', () => {
     wrapper2.vm.inputWidth = 234
     expect(wrapper2.vm.showInputLabels).toBe(true)
+  })
+
+  it('should update inputWidth on mount and screen resize', () => {
+    const updateInputWidth = vi.spyOn(DateInputs.methods, 'updateInputWidth')
+    
+    mount(DateInputs, {
+      props: {
+        toggleDatepicker: () => false,
+        i18n: i18n, 
+        checkIn: new Date('2022-12-12'),
+      },
+      computed: {
+        inputSize() { return 'long' },
+        inputsWrapperExists() { return true }
+      }
+    })
+    expect(updateInputWidth).toHaveBeenCalledTimes(1)
+
+    window.dispatchEvent(new Event('resize'))
+    expect(updateInputWidth).toHaveBeenCalledTimes(2)
+
+  })
+
+  it('should not update input width if inputs_wrapper does not exist', () => {
+    const updateInputWidth = vi.spyOn(DateInputs.methods, 'updateInputWidth')
+
+    mount(DateInputs, {
+      props: {
+        toggleDatepicker: () => false,
+        i18n: i18n, 
+        checkIn: new Date('2022-12-12'),
+      },
+      computed: {
+        inputSize() { return 'long' },
+        inputsWrapperExists() { return false }
+      }
+    })
+
+    expect(updateInputWidth).toHaveBeenCalledTimes(0)
+
+    window.dispatchEvent(new Event('resize'))
+    expect(updateInputWidth).toHaveBeenCalledTimes(0)
   })
 })

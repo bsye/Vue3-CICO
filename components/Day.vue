@@ -307,25 +307,11 @@ export default {
     ...Helpers,
     get,
 
-    isClickable() {
-      if (this.$refs && this.$refs.day) {
-        return getComputedStyle(this.$refs.day).pointerEvents !== 'none'
-      }
-
-      return true
-    },
-
     dayClicked(event, date) {
       const resetCheckin = false
+      const formatDate = this.dateFormatter(date)
 
-      if (this.isClickable()) {
-        const formatDate = this.dateFormatter(date)
-
-        this.$emit('day-clicked', event, date, formatDate, resetCheckin)
-      } else {
-        this.$emit('clear-selection')
-        this.dayClicked(event, date)
-      }
+      this.$emit('day-clicked', event, date, formatDate, resetCheckin)
     },
 
     validDayHovered(date) {
