@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "name": "Hotel Guadalajara & Conference Center**** Affiliated by Melia",
+      "img": "https://media.smartbox.com/pim/10000016898531068909525.jpg",
+      "nb_personnes": "2",
+      "experiences": [
+        {
+          "id": "1041615",
+          "components": ["une nuit en chambre double", "un petit-déjeuner Buffet"]
+        }
+      ],
+      "location": "Guadalajara - Castille-La Manche"
+    },
+    {
+      "name": "Hostal Porta de Núria",
+      "img": "https://media.smartbox.com/pim/es000775046_original.jpg",
+      "nb_personnes": "2",
+      "experiences": [
+        {
+          "id": "105565",
+          "components": [
+            "une nuit en chambre double standard",
+            "un petit-déjeuner Buffet",
+            "un dîner composé de 2 plats typiques de la région et d'un dessert"
+          ]
+        }
+      ],
+      "location": "Ribes de Freser - Catalogne"
+    },
+    {
+      "name": "Logis Hôtel le Tadorne***",
+      "img": "https://media.smartbox.com/pim/ot000671117_original.jpg",
+      "nb_personnes": "2",
+      "experiences": [
+        {
+          "id": "10589",
+          "components": ["une nuit en chambre double « Balnéo »", "un petit-déjeuner", "une coupe de champagne"]
+        }
+      ],
+      "location": "Piney - Champagne-Ardenne"
+    },
+    {
+      "name": "Les Maîtres Sonneurs",
+      "img": "https://media.smartbox.com/pim/10000019640181901101455.jpg",
+      "nb_personnes": "2",
+      "experiences": [
+        {
+          "id": "111416",
+          "components": ["une nuit en yourte", "un petit-déjeuner Maison", "un dîner Menu Bio boissons comprises"]
+        }
+      ],
+      "location": "Huriel - Auvergne"
+    },
+    {
+      "name": "Unahotels Imperial Sport Hotel****",
+      "img": "https://media.smartbox.com/pim/ot000147195_original.eps",
+      "nb_personnes": "2",
+      "experiences": [
+        {
+          "id": "143164",
+          "components": ["une nuit en chambre double « Standard »", "un petit-déjeuner", "un dîner « Menu 4 Plats »"]
+        }
+      ],
+      "location": "Pesaro - Marches"
+    },
+    {
+      "name": "Domaine des Mouillères",
+      "img": "https://media.smartbox.com/pim/fr000847176_original.jpg",
+      "nb_personnes": "2",
+      "experiences": [
+        {
+          "id": "14911",
+          "components": [
+            "une nuit en chambre double « Julie »",
+            "un petit-déjeuner",
+            "un dîner « Menu 2 Plats » hors boissons"
+          ]
+        }
+      ],
+      "location": "Saint-Georges-la-Pouge - Limousin"
+    }
+  ]
+}

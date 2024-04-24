@@ -1,43 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="header">
-        <h1>Smartbox test</h1>
-        <p>Hello 👋! In this test you'll have to complete the following tasks:</p>
-        <ul>
-          <ol>
-            Implement a search button for the Check-in Check-out (CICO) component you see below. You can find the
-            documentation for the Check-in Check-out component in the README.md file
-          </ol>
-          <ul>
-            <li>The button should be enabled only when the check-in and check-out dates are filled</li>
-            <li>The button should be disabled when the check-in and check-out dates are cleared</li>
-            <li>Clicking on the button will trigger the getItems() function</li>
-          </ul>
-          <ol>
-            The getItems() contains an API call, but it misses the dateFrom and the dateTo parameters that are necessary
-            for the response to be returned. Complete the API call and retrieve the response.
-          </ol>
-          <ul>
-            <li>After you have obtained the response, the items should be saved in the Items store module</li>
-            <li>
-              Create a new component called ItemTeaser that will look like this:
-              https://www.figma.com/file/XfVe6BFbXo0iMkZmFKKuQg/Smartbox-test?type=design&node-id=0%3A1&mode=design&t=SAtp2s1JbwJ3eQnC-1
-              And that will receive as props the name, img, nb_personnes, experiences and location returned by the items
-              responses
-            </li>
-            <li>
-              Create a new component called ItemsGrid which will retrieve the items from the Items Store module and
-              display each item in the array as an ItemTeaser.
-            </li>
-            <li>Display the ItemsGrid below the calendar</li>
-            <li>
-              Style the items grid to show three elements per column on desktop (&gt;=1024), two items on tablet
-              (&gt;=768) and 1 element per column on mobile (&lt;768). the items should have a gap of 16px between each
-            </li>
-          </ul>
-        </ul>
-      </div>
+      <TestStatement />
       <div class="picker">
         <Cico class="cico__style-search" />
       </div>
@@ -47,18 +11,27 @@
 
 <script>
 import './assets/scss/index.scss'
+import TestStatement from '../components/TestStatement.vue'
 import Cico from '../components/Cico.vue'
 import en from '/i18n/en.js'
+import axiosInstance from '../axios/axios.js'
 
 export default {
   name: 'Examples',
   components: {
     Cico,
+    TestStatement,
   },
 
   computed: {
     i18n() {
       return en
+    },
+  },
+
+  methods: {
+    async getItems() {
+      let request = await axiosInstance.get('../mocks/items.json')
     },
   },
 }
@@ -216,7 +189,6 @@ body {
   .container {
     max-height: 100vh;
     height: auto;
-    flex-grow: 1;
 
     padding: 16px;
 
@@ -226,15 +198,30 @@ body {
   }
 
   .header {
-    width: 100%;
     font-weight: semibold;
-    color: white;
+    line-height: 1.4;
+    padding: 32px;
+    border-radius: 8px;
+    background-color: white;
+
+    color: #111;
     display: flex;
     gap: 1rem;
     flex-direction: column;
 
     ul {
+      ol {
+        font-weight: 600;
+        list-style-type: decimal;
+        margin-bottom: 20px;
+        font-size: 16px;
+        margin-top: 32px;
+      }
+
       li {
+        font-weight: 400;
+        margin: 10px;
+        font-size: 14px;
         list-style-type: disc;
       }
     }
@@ -262,15 +249,30 @@ body {
 
   .picker {
     flex-grow: 1;
-    height: 100%;
-    position: relative;
-    bottom: 70px;
-    display: flex;
-    max-width: 768px;
-    margin: 0 auto;
-    gap: 2rem;
-    flex-direction: column;
-    justify-content: center;
+    margin-top: 80px;
+  }
+
+  .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    padding-inline: 8px;
+    padding: 3px;
+    color: white;
+    background-color: gray;
+    border-radius: 3px;
+    font-weight: 600;
+
+    &.hard {
+      background-color: #f5565c;
+    }
+
+    &.medium {
+      background-color: #e37933;
+    }
+
+    &.easy {
+      background-color: #63be63;
+    }
   }
 }
 </style>
