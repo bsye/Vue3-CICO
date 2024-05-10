@@ -9,31 +9,19 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { computed, ref } from 'vue'
 import './assets/scss/index.scss'
 import TestStatement from '../components/TestStatement.vue'
 import Cico from '../components/Cico.vue'
-import en from '/i18n/en.js'
 import axiosInstance from '../axios/axios.js'
+import { useItemsStore } from '../stores/items.js'
 
-export default {
-  name: 'Examples',
-  components: {
-    Cico,
-    TestStatement,
-  },
+const store = useItemsStore()
+const items = ref([])
 
-  computed: {
-    i18n() {
-      return en
-    },
-  },
-
-  methods: {
-    async getItems() {
-      let request = await axiosInstance.get('../mocks/items.json')
-    },
-  },
+const getItems = async () => {
+  let request = await axiosInstance.get('../mocks/items.json')
 }
 </script>
 
